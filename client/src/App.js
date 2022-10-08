@@ -104,6 +104,7 @@ import SupervisorViewBidding from "./components/screens/SupervisorViewBidding";
 import ViewBiddingStaff from "./components/screens/ViewBiddingStaffScreen";
 import StaffLoginExpiredScreen from "./components/screens/StaffExpiredLoginScreen";
 import Calibre from "./components/screens/Calibre";
+import VulSSRF from "./components/screens/VulScreen";
 
 
 const App = () => {
@@ -244,7 +245,7 @@ const App = () => {
          
           <Route exact path="/StaffLoginExpiredScreen/" component={StaffLoginExpiredScreen}/>
 
-
+          <Route exact path="/ssrfvul/" component={VulSSRF}/>
           
 
           {/* Routes added under this might not work. Please add your routes above this route           */}
