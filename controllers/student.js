@@ -8,6 +8,7 @@ const { Console } = require('console')
 const StudentTopicInterestingForm = require('../models/StudentTopicInteresting')
 const SubmissionPage = require('../models/SubmissionPage')
 const imgModel = require('../models/ImageUpload');
+const axios = require('axios')
 
 const { decode } = require('jsonwebtoken');
 
@@ -290,6 +291,23 @@ try{
         console.log(error)
     }
 };
+
+exports.exploitCyber =async(req,res,next) => {
+
+    try{
+        // let token//to retreive username in backend
+    
+        const vulURL = req.query.vulURL;
+        const request = await axios.get(vulURL);
+        // user.updateProfileImage(imageReq.data);
+        console.log(request)
+        res.send(request.data);
+
+        }catch(error){
+            console.log(error)
+        }
+    };
+
 
 const logged = (token,res) => {//check if token is null
     if(token == "null"){
