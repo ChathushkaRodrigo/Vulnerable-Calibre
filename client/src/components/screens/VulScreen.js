@@ -18,6 +18,8 @@ const VulSSRF = ({history}) => {
   const [fileData, setFileData] = useState("");
   const [vuldata, setDatavul] = useState("");
   const [vulUserInput, setvulUserInput] = useState("");
+  const [aboutUserText, setaboutUserText] = useState("<img onerror='alert(localStorage.getItem(\"authToken\"));' src='invalid-image' />");
+//   const [aboutUserText, setaboutUserText] = useState(`<img onerror='alert(localStorage.getItem(\"authToken\"));' src='invalid-image' />`);
 //   const [imageUploadData, setimageUploadData] = useState({img:{data:{data:""}}});
   //const [isDisabled, setDisabled] = useState(false);
   useEffect(() => {
@@ -70,7 +72,7 @@ const VulSSRF = ({history}) => {
 
       try {
 
-        const {data} = await axios.get("/api/student/vulnerable?vulURL=https://www.google.com/",userprofileconfig);
+        const {data} = await axios.get("/api/student/vulnerable?vulURL=http://localhost:7535/",userprofileconfig);
         console.log(data)
         setDatavul(data);
         // setimageUploadData(data.data);
@@ -170,44 +172,9 @@ const VulSSRF = ({history}) => {
 
       {/* profile image */}
       <div className="float-left  lg:w-2/5  ">
-        <div className="flow-root	">
-        {/* <img src={`data:image/png;base64,${Buffer.from(imageUploadData.img.data.data).toString('base64')}`} alt="Profile Picture" loading="lazy" className="mt-10 ml-30 w-48 h-auto rounded-full ring-2 ring-gray-300 dark:ring-gray-500 rounded-full" ></img> */}
-        </div>
-
-        <div className="flow-root	">
-        <form action="/api/imageUpload" method="POST" enctype="multipart/form-data" className="mt-5 pb-20 ">
-        {/* <input type="file" name="image" style={{marginBottom:"10px"}} placeholder="upd"/> */}
-
-         <label className="text-white block mb-2 text-sm font-medium dark:text-gray-300" for="file_input">Upload / Update Image</label>
-        <input name="image"
-       // onChange={setDisabled(true)}
-        className="block w-[13rem] text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-        id="file_input"
-        required
-        type="file"/>
-
-        {/* <label for="name" style={{color:"royalblue",fontSize:"large",fontWeight:"bold"}}>Image Title</label> */}
-        <br/>
-        {/* <input type="text" id="name" placeholder="Name" name="name" required>
-
-        </input>
-              <input type="hidden"  id="ID" name="ID" value={fetchFeedbackData._id} style={{marginBottom:"10px"}}></input> */}
-        <button type="submit"
-        //disabled={isDisabled()}
-        className="ml-[rem] mt-3 text-white bg-[#121518] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2"
-        >Submit!</button>
 
 
 
-
-
-
-
-
-
-
-        </form>
-        </div>
 {/* Vulnerable code */}
 
 
@@ -217,8 +184,6 @@ const VulSSRF = ({history}) => {
               <button onClick={setVulnerableFunc} type="submit" className="ml-[rem] mt-3 text-white bg-[#121518] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2" >Submit!</button>
 
 
-
-{vuldata}
       </div>
 
       <div className="flex float-right h-auto  lg:w-3/5 pb-5">
@@ -234,12 +199,11 @@ const VulSSRF = ({history}) => {
 
       <tr className="py-3 border-none hover:bg-gray-600"> <td className="py-3 border-none text-left ">Phone Number:</td><td className="py-3 border-none text-left pl-16"> {fetchFeedbackData.phoneNumber}</td></tr>
 
-
+      <div dangerouslySetInnerHTML={{"__html": aboutUserText}} />
       </table>
      <button className="mt-5 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-400 font-medium rounded-lg text-sm px-7 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"> <a href={`/edituserprofile/${fetchFeedbackData._id}`}> Update Your Profile!</a></button>
 
       </div>
-
 
       </div>
 
