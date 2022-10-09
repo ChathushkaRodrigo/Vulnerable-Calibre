@@ -7,7 +7,7 @@ import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
 import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import { setMaxListeners } from "nodemailer/lib/xoauth2";
+// import { setMaxListeners } from "nodemailer/lib/xoauth2";
 import Swal from 'sweetalert2'
 
 
