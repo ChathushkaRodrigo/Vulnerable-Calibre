@@ -8,6 +8,10 @@ COPY ./public ./public
 
 	
 COPY ./src ./src
+COPY ./img ./img
+COPY ./public ./public
+
+
 	
 RUN npm install
 
