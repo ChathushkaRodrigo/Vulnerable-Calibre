@@ -9,25 +9,35 @@ import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { setMaxListeners } from "nodemailer/lib/xoauth2";
 import Swal from 'sweetalert2'
+import * as DOMPurify from 'dompurify';
+
 
 
 export default function StatusDocumentMarkingConfiguration() {
 
     const [error, setError] = useState("");
-    const [totalContribution ,setTotalContribution] = useState("");
-    const[stdesc01,setstDesc01] = useState("");
-    const[stdesc02,setstDesc02] = useState("");
-    const[stdesc03,setstDesc03] = useState("");
-    const[stdesc04,setstDesc04] = useState("");
-    const[marksEn01,setmarkEn01] = useState("");
-    const[marksEn02,setmarkEn02] = useState("");
-    const[marksEn03,setmarkEn03] = useState("");
-    const[marksEn04,setmarkEn04] = useState("");
+    const [totContribution ,setTotalContribution] = useState("");
+    const[stdesc1,setstDesc01] = useState("");
+    const[stdesc2,setstDesc02] = useState("");
+    const[stdesc3,setstDesc03] = useState("");
+    const[stdesc4,setstDesc04] = useState("");
+    const[marksEn1,setmarkEn01] = useState("");
+    const[marksEn2,setmarkEn02] = useState("");
+    const[marksEn3,setmarkEn03] = useState("");
+    const[marksEn4,setmarkEn04] = useState("");
+    const [errorMessage, setErrorMessage] = useState("");
 
     const statusDocumentMarkingID = "62ba94a728099fe3e5aacf54";
 
-
-
+    let totalContribution = DOMPurify.sanitize(totContribution);
+    let stdesc01 = DOMPurify.sanitize(stdesc1);
+    let stdesc02 = DOMPurify.sanitize(stdesc2);
+    let stdesc03 = DOMPurify.sanitize(stdesc3);
+    let stdesc04 = DOMPurify.sanitize(stdesc4);
+    let marksEn01 = DOMPurify.sanitize(marksEn1);
+    let marksEn02 = DOMPurify.sanitize(marksEn2);
+    let marksEn03 = DOMPurify.sanitize(marksEn3);
+    let marksEn04 = DOMPurify.sanitize(marksEn4);
     //************* UPDATE PROPOSAL REPORT MARKING RUBRIK HANDLER  **********/ 
   const statusDocumentMarkingHandler = async (e) => {
     e.preventDefault();
@@ -50,8 +60,13 @@ export default function StatusDocumentMarkingConfiguration() {
   };
 
 
+  
 
-
+  // function validationHandler(value) {
+  //   if(value.includes("<")){
+  //     setErrorMessage("Cannot include scripts!")
+  //   }
+  // }
 
 
 
@@ -83,7 +98,7 @@ export default function StatusDocumentMarkingConfiguration() {
           className = "input" style={{color:"white"}}
           name="name" 
           onChange={(e) => setTotalContribution(e.target.value)}
-          value={totalContribution} />
+          value={totContribution} />
         </div>
         <br/>
 
@@ -93,7 +108,7 @@ export default function StatusDocumentMarkingConfiguration() {
           className = "input" style={{color:"white"}}
           name="name" 
           onChange={(e) => setmarkEn01(e.target.value)}
-          value={marksEn01} />
+          value={marksEn1} />
         </div>
 
         <br/>
@@ -103,7 +118,7 @@ export default function StatusDocumentMarkingConfiguration() {
           className = "input" style={{color:"white"}}
           name="name" 
           onChange={(e) => setmarkEn02(e.target.value)}
-          value={marksEn02} />
+          value={marksEn2} />
         </div>
         <br/>
         <div className="form-group">
@@ -112,7 +127,7 @@ export default function StatusDocumentMarkingConfiguration() {
           className = "input" style={{color:"white"}}
           name="name" 
           onChange={(e) => setmarkEn03(e.target.value)}
-          value={marksEn03} />
+          value={marksEn3} />
         </div>
         <br/>
         <div className="form-group">
@@ -121,7 +136,7 @@ export default function StatusDocumentMarkingConfiguration() {
           className = "input" style={{color:"white"}}
           name="name" 
           onChange={(e) => setmarkEn04(e.target.value)}
-          value={marksEn04} />
+          value={marksEn4} />
         </div>
         <br/>
         <center/>
@@ -141,7 +156,7 @@ export default function StatusDocumentMarkingConfiguration() {
         <label className="TopicNames">Section 02</label> <br/><br/>
                 <CKEditor
         editor={ClassicEditor}
-        data={stdesc02}
+        data={stdesc2}
         onChange={(event,editor)=>{
           const data = editor.getData()
           setstDesc02(data)
@@ -151,7 +166,7 @@ export default function StatusDocumentMarkingConfiguration() {
         <label className="TopicNames">Section 03</label> <br/><br/>
                 <CKEditor
         editor={ClassicEditor}
-        data={stdesc03}
+        data={stdesc3}
         onChange={(event,editor)=>{
           const data = editor.getData()
           setstDesc03(data)
@@ -161,7 +176,7 @@ export default function StatusDocumentMarkingConfiguration() {
         <label className="w-[30rem] text-slate-50">Section 04</label> <br/><br/>
                 <CKEditor className="section-content"
         editor={ClassicEditor}
-        data={stdesc04}
+        data={stdesc4}
         onChange={(event,editor)=>{
           const data = editor.getData()
           setstDesc04(data)

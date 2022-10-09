@@ -66,16 +66,16 @@
                                 <p className='proposalText'>Enter changes to the relevant field, <br/>if the required data to input is not available enter <b> N/A </b>for the respective fields </p>
                                 <form className='proposalUpdateForm' onSubmit={progressPresentationMarkingHandler} >
                                 <center>
-                                <input type="text" placeholder="Total Contribution % "     onChange={(e) => setTotalContribution(e.target.value)} value={totalContribution}/>
-                                <input type="text" placeholder="Excellent Grade Range"     onChange={(e) => setExcellent(e.target.value)}value={excellent}/>
-                                <input type="text" placeholder="Good Grade Range"          onChange={(e) => setGood(e.target.value)}value={good}/>
-                                <input type="text" placeholder="Average Grade Range"       onChange={(e) => setAverage(e.target.value)}value={average}/>
-                                <input type="text" placeholder="Below Average Grade Range" onChange={(e) => setBelowAverage(e.target.value)}value={belowAverage} />
-                                <input type="text" placeholder="L01 Affected Precentage %" onChange={(e) => setl01(e.target.value)}value={l01}/>
-                                <input type="text" placeholder="L02 Affected Precentage %" onChange={(e) => setl02(e.target.value)}value={l02} />
-                                <input type="text" placeholder="L03 Affected Precentage %" onChange={(e) => setl03(e.target.value)}value={l03}/>
-                                <input type="text" placeholder="L04 Affected Precentage %" onChange={(e) => setl04(e.target.value)}value={l04}/>
-                                <input type="text" placeholder="L05 Affected Precentage %" onChange={(e) => setl05(e.target.value)}value={l05}/>
+                                <input type="number" placeholder="Total Contribution % "     onChange={(e) => setTotalContribution(e.target.value)} value={totalContribution}/>
+                                <input type="number" placeholder="Excellent Grade Range"     onChange={(e) => setExcellent(e.target.value)}value={excellent}/>
+                                <input type="number" placeholder="Good Grade Range"          onChange={(e) => setGood(e.target.value)}value={good}/>
+                                <input type="number" placeholder="Average Grade Range"       onChange={(e) => setAverage(e.target.value)}value={average}/>
+                                <input type="number" placeholder="Below Average Grade Range" onChange={(e) => setBelowAverage(e.target.value)}value={belowAverage} />
+                                <input type="number" placeholder="L01 Affected Precentage %" onChange={(e) => setl01(e.target.value)}value={l01}/>
+                                <input type="number" placeholder="L02 Affected Precentage %" onChange={(e) => setl02(e.target.value)}value={l02} />
+                                <input type="number" placeholder="L03 Affected Precentage %" onChange={(e) => setl03(e.target.value)}value={l03}/>
+                                <input type="number" placeholder="L04 Affected Precentage %" onChange={(e) => setl04(e.target.value)}value={l04}/>
+                                <input type="number" placeholder="L05 Affected Precentage %" onChange={(e) => setl05(e.target.value)}value={l05}/>
                                 </center>
                                 <center>
                                 <input type="submit" value="Update" />

