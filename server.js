@@ -29,6 +29,7 @@ const multer  = require('multer')
 
 // Step 4 - set up EJS
 
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
@@ -65,7 +66,7 @@ app.post('/images', upload.single('image'),async (req,res) =>{
 })
 
 app.use(express.json())
-app.use(cors());
+// app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 

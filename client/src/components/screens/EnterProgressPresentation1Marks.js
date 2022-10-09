@@ -243,7 +243,8 @@ return  error ? (
     </div>
     <table className="border-none">
     <tr className="border-none">  
-    <p className="text-2xl text-center pt-3 pb-3 ">Proven gap/Creative Solution [Based on LO1] - [{lO1}%]</p>
+    {/* <div dangerouslySetInnerHTML={{__html:  }}  /> */}
+      <p className="text-2xl text-center pt-3 pb-3 ">Proven gap/Creative Solution [Based on LO1] - [{lO1}%]</p>
     
     </tr>
     </table>

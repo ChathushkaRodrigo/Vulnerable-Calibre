@@ -65,7 +65,7 @@ function Calibre() {
         <button className='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-[10rem]  mt-[rem]'> <a href='https://www.sliit.lk/'>Visit SLIIT Portal</a>  </button>
 
         <div id='hero-image'>
-            <img src='https://static.sliit.lk/wp-content/uploads/2018/10/02051658/SLIIT-Building.jpg' className='w-auto h-[40rem] ml-[62rem] mt-[-29rem] '/>
+            <img src='https://static.sliit.lk/wp-content/uploads/2018/10/02051658/SLIIT-Building.jpg' className='w-auto h-[40rem] ml-[66.89rem] mt-[-29rem] '/>
 
             
         </div>
