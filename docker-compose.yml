@@ -7,12 +7,24 @@ services:
       - 3000:3000
     networks:
       - mern-app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
   backend: 
     build: ./
     ports:
       - 5000:5000
     networks:
       - mern-app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+  vulnerable:
+    build: ./vulnerable_server
+    ports:
+      - 7777:7777
+    networks:
+      - mern-app
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   mern-app:
