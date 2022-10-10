@@ -12,6 +12,7 @@ COPY ./uploads ./uploads
 COPY ./utils ./utils
 COPY ./views ./views
 COPY ./config.env ./config.env 
+COPY ./s3.js ./s3.js
 
 RUN npm install
 EXPOSE 5000

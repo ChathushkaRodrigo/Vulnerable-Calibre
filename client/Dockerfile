@@ -11,7 +11,8 @@ COPY ./src ./src
 COPY ./img ./img
 COPY ./public ./public
 
-
+COPY ./postcss.config.js ./postcss.config.js
+COPY ./tailwind.config.js ./tailwind.config.js 
 	
 RUN npm install
 

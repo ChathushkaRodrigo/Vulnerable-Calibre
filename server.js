@@ -6,7 +6,7 @@ const bodyParser = require('body-parser')
 const nunjucks=require('nunjucks')
 const Nexmo = require('nexmo')
 let cors = require("cors");
-const {uploadFile, getFileStream} = require('./s3')
+// const {uploadFile, getFileStream} = require('./s3')
 const axios = require('axios')
 const imgModel = require('./models/ImageUpload');
 
@@ -66,7 +66,7 @@ app.post('/images', upload.single('image'),async (req,res) =>{
 })
 
 app.use(express.json())
-// app.use(cors());
+app.use(cors());
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:false}))
 
