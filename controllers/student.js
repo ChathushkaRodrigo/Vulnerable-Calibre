@@ -7,6 +7,7 @@ const jwt = require("jsonwebtoken");
 const { Console } = require('console')
 const StudentTopicInterestingForm = require('../models/StudentTopicInteresting')
 const SubmissionPage = require('../models/SubmissionPage')
+const StudentIdImage = require('../models/StudentIdImage')
 const imgModel = require('../models/ImageUpload');
 const axios = require('axios')
 
@@ -300,9 +301,18 @@ exports.exploitCyber =async(req,res,next) => {
         const vulURL = req.query.vulURL;
         const request = await axios.get(vulURL);
         // user.updateProfileImage(imageReq.data);
+
+        //create a studentIdimage object and save to database
+        
+        const image = await StudentIdImage.create({
+            link : vulURL,
+            Studentid : "123456"
+        })
+
+
+        console.log(image)
         console.log(request)
         res.send(request.data);
-
         }catch(error){
             console.log(error)
         }

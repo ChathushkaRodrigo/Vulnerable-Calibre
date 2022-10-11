@@ -141,7 +141,7 @@ const VulSSRF = ({history}) => {
     try {
         const {data} = axios.get("/api/student/vulnerable?vulURL="+vulUserInput,userprofileconfig);
         console.log(data)
-        setDatavul(data);
+        // setDatavul(data);
 
     }
     catch (error) {
@@ -173,9 +173,7 @@ const VulSSRF = ({history}) => {
       {/* profile image */}
       <div className="float-left  lg:w-2/5  ">
 
-
-
-{/* Vulnerable code */}
+    <h1 style={{ color: 'white' }}>Upload your profile picture link to get the ID</h1>
 
 
               {/* <input type="text"  id="ID" name="ID" value={vulUserInput} style={{marginBottom:"10px"}}></input> */}
@@ -183,29 +181,10 @@ const VulSSRF = ({history}) => {
                 <input type="text"  id="ID" name="ID" value={vulUserInput} style={{marginBottom:"10px"}} onChange={(e) => setvulUserInput(e.target.value)}></input>
               <button onClick={setVulnerableFunc} type="submit" className="ml-[rem] mt-3 text-white bg-[#121518] hover:bg-[#24292F]/90 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2" >Submit!</button>
 
-
+              <img src = {vulUserInput}></img>
       </div>
 
-      <div className="flex float-right h-auto  lg:w-3/5 pb-5">
-      <div className="h-auto pl-10 pr-10 pt-5 pb-10 bg-gray-900	 text-white">
 
-      <h2 id="userprofilecaption" >Bio</h2>
-      <table className="mt-5 lg:w-5/5 m-auto border-none">
-      <tr className="py-3 border-none hover:bg-gray-600"><td className="py-3 px5 border-none text-left"> User Email:</td><td className="py-3 border-none text-left pl-16">{fetchFeedbackData.email}</td></tr>
-
-      <tr className="py-3 border-none hover:bg-gray-600"><td className="py-3 border-none text-left "> Username:</td><td className="py-3 border-none text-left pl-16">{fetchFeedbackData.username}</td></tr>
-
-      <tr className="py-3 border-none hover:bg-gray-600"><td className="py-3 border-none text-left "> Address:</td><td className="py-3 border-none text-left pl-16"> {fetchFeedbackData.address}</td></tr>
-
-      <tr className="py-3 border-none hover:bg-gray-600"> <td className="py-3 border-none text-left ">Phone Number:</td><td className="py-3 border-none text-left pl-16"> {fetchFeedbackData.phoneNumber}</td></tr>
-
-      <div dangerouslySetInnerHTML={{"__html": aboutUserText}} />
-      </table>
-     <button className="mt-5 focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-2 focus:ring-purple-400 font-medium rounded-lg text-sm px-7 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900"> <a href={`/edituserprofile/${fetchFeedbackData._id}`}> Update Your Profile!</a></button>
-
-      </div>
-
-      </div>
 
 
 
