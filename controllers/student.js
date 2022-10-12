@@ -408,3 +408,5 @@ const logged = (token,res) => {//check if token is null
 
 //invalid urt http://127.1
 //modified DNS vap.me:5000
+//whitelist http://localhost:5000/api/student/vulnerableWhiteList?vulURL=http://twitter.com
+//blacklist   http://localhost:5000/api/student/vulnerable?vulURL=https://www.torrent.com
