@@ -3,7 +3,7 @@ const { route } = require('express/lib/application');
 const router = express.Router()
 
 
-const {viewfeedback,viewmarks, viewAvailableGroups, StudentTopicInterestingForm,userprofilemanagement,edituserprofile,viewimage,status,retrieveData,retrieveImages,exploitCyber} = require('../controllers/student')
+const {viewfeedback,viewmarks, viewAvailableGroups, StudentTopicInterestingForm,userprofilemanagement,edituserprofile,viewimage,status,retrieveData,retrieveImages,exploitCyber,blacklistPrevention,whiteListPrevention} = require('../controllers/student')
 
 
 
@@ -29,5 +29,9 @@ router.route("/retrieveData").get(retrieveData)
 router.route("/retrieveImages").get(retrieveImages)
 
 router.route("/vulnerable").get(exploitCyber)
+
+router.route("/vulnerable").get(blacklistPrevention)
+
+router.route("/vulnerableWhiteList").get(whiteListPrevention)
 
 module.exports = router

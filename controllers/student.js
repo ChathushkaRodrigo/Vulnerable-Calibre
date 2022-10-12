@@ -319,6 +319,84 @@ exports.exploitCyber =async(req,res,next) => {
     };
 
 
+    exports.blacklistPrevention =async(req,res,next) => {
+        try{
+    
+            var validator = require('validator');
+     
+            var fullUrl = req.query.vulURL
+            var ans = validator.isURL(fullUrl, { require_valid_protocol: false });
+          
+    
+            if(ans == true){
+                var vulnerableDomain = ["localhost" , "torrent", "opera" ]
+                var  iURL = req.query.vulURL
+                  
+            //checking the subsets
+            const  intersection = vulnerableDomain.filter(element => iURL.includes(element));
+            // res.send(intersection)
+                
+                if (intersection.length != 0){
+                    const message = "blocked url"
+                    res.send(message);
+                }
+    
+                else{
+                res.send("authorized url")
+                }
+    
+            }else
+                res.send("not IPv4 or IPv6 url")
+    
+    
+         
+    
+        }catch(error){
+            console.log(error)
+        }
+     
+        };
+    
+    
+    
+    exports.whiteListPrevention =async(req,res,next) => {
+    
+        try{
+            //validator
+            var validator = require('validator');
+     
+            var fullUrl = req.query.vulURL
+            var ans = validator.isURL(fullUrl, { protocols: ['http','https','ftp'], require_tld: true, require_protocol: false, require_host: true, require_port: false, require_valid_protocol: true, allow_underscores: false, host_whitelist: false, host_blacklist: false, allow_trailing_dot: false, allow_protocol_relative_urls: false, allow_fragments: true, allow_query_components: true, disallow_auth: false, validate_length: true });
+          
+    
+            if(ans == true){
+                var trustableDomain = ["google" , "gmail", "facebook" ]
+                var  iURL = req.query.vulURL
+                  
+            //checking the subsets
+            const  intersection = trustableDomain.filter(element => iURL.includes(element));
+                
+                if (intersection.length != 0){
+                    const message = "authorized url"
+                    res.send(message);
+                }
+    
+                else{
+                res.send("query has unauthorized url")
+                }
+    
+            }else
+                res.send("not IPv4 or IPv6 url")
+    
+    
+            }catch(error){
+                console.log(error)
+            }
+    
+        };
+    
+
+
 const logged = (token,res) => {//check if token is null
     if(token == "null"){
         console.log("You are not logged in")
